@@ -26,8 +26,17 @@ class Game {
     this.score = 0;
     this.status = 'idle'; // 'idle', 'playing', 'win', 'lose'
 
-    this.field = Array.from({ length: this.size }, () =>
-      Array(this.size).fill(0));
+    this.field = Array.from({ length: this.size }, () => {
+      Array(this.size).fill(0);
+    });
+
+    if (initialState) {
+      for (let r = 0; r < this.size; r++) {
+        for (let c = 0; c < this.size; c++) {
+          this.field[r][c] = initialState[r][c] || 0;
+        }
+      }
+    }
     // console.log(initialState);
   }
 
@@ -56,11 +65,9 @@ class Game {
     for (const row of this.field) {
       if (row.includes(2048)) {
         this.status = 'win';
-
         return true;
       }
     }
-
     return false;
   }
 
@@ -139,7 +146,9 @@ class Game {
   }
 
   rotateLeft() {
-    const newField = Array.from({ length: this.size }, () => Array(this.size).fill(0));
+    const newField = Array.from({ length: this.size }, () => {
+      Array(this.size).fill(0);
+    });
 
     for (let row = 0; row < this.size; row++) {
       for (let col = 0; col < this.size; col++) {
@@ -150,7 +159,9 @@ class Game {
   }
 
   rotateRight() {
-    const newField = Array.from({ length: this.size }, () => Array(this.size).fill(0));
+    const newField = Array.from({ length: this.size }, () => {
+      Array(this.size).fill(0);
+    });
 
     for (let row = 0; row < this.size; row++) {
       for (let col = 0; col < this.size; col++) {
@@ -195,7 +206,9 @@ class Game {
     this.score = 0;
     this.status = 'playing';
 
-    this.field = Array.from({ length: this.size }, () => Array(this.size).fill(0));
+    this.field = Array.from({ length: this.size }, () => {
+      return Array(this.size).fill(0);
+    });
     this.addRandomTile();
     this.addRandomTile();
   }
