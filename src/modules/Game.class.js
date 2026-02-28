@@ -27,7 +27,7 @@ class Game {
     this.status = 'idle'; // 'idle', 'playing', 'win', 'lose'
 
     this.field = Array.from({ length: this.size }, () => {
-      Array(this.size).fill(0);
+      return Array(this.size).fill(0);
     });
 
     if (initialState) {
@@ -65,9 +65,11 @@ class Game {
     for (const row of this.field) {
       if (row.includes(2048)) {
         this.status = 'win';
+
         return true;
       }
     }
+
     return false;
   }
 
@@ -147,7 +149,7 @@ class Game {
 
   rotateLeft() {
     const newField = Array.from({ length: this.size }, () => {
-      Array(this.size).fill(0);
+      return Array(this.size).fill(0);
     });
 
     for (let row = 0; row < this.size; row++) {
@@ -160,7 +162,7 @@ class Game {
 
   rotateRight() {
     const newField = Array.from({ length: this.size }, () => {
-      Array(this.size).fill(0);
+      return Array(this.size).fill(0);
     });
 
     for (let row = 0; row < this.size; row++) {

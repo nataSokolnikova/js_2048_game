@@ -38,6 +38,7 @@ function render() {
   for (let r = 0; r < game.size; r++) {
     for (let c = 0; c < game.size; c++) {
       const value = state[r][c];
+
       cells[i].textContent = value === 0 ? '' : value;
       cells[i].style.backgroundColor = colors[value] || '#3c3a32';
       i++;
@@ -52,8 +53,8 @@ function render() {
 }
 
 // Клавіші для гри
-document.addEventListener('keydown', (event) => {
-  switch (event.key) {
+document.addEventListener('keydown', (e) => {
+  switch (e.key) {
     case 'ArrowLeft':
       game.moveLeft();
       break;
@@ -71,9 +72,16 @@ document.addEventListener('keydown', (event) => {
 });
 
 // Кнопка Start
-document.querySelector('.button.start').addEventListener('click', () => {
+// document.querySelector('.button.start').addEventListener('click', () => {
+//   game.restart();
+//   render();
+// });
+const startButton = document.querySelector('.button');
+
+startButton.addEventListener('click', () => {
   game.restart();
   render();
+  startButton.textContent = 'Restart';
 });
 
 // Початковий рендер
