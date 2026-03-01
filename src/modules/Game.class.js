@@ -94,10 +94,10 @@ class Game {
           return false;
         }
       }
-      this.status = 'lose';
-
-      return true;
     }
+    this.status = 'lose';
+
+    return true;
   }
 
   moveLeft() {
