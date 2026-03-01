@@ -93,10 +93,10 @@ class Game {
         ) {
           return false;
         }
-        this.status = 'lose';
-
-        return true;
       }
+      this.status = 'lose';
+
+      return true;
     }
   }
 
@@ -128,7 +128,10 @@ class Game {
     if (moved) {
       this.addRandomTile();
     }
-    this.checkWin();
+
+    if (this.checkWin()) {
+      return;
+    }
     this.checkLose();
   }
   moveRight() {

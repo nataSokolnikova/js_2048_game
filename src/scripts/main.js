@@ -45,7 +45,10 @@ function render() {
     }
   }
 
-  scoreEl.textContent = game.getScore();
+  // scoreEl.textContent = game.getScore();
+  const totalScore = state.flat().reduce((sum, val) => sum + val, 0);
+
+  scoreEl.textContent = totalScore;
 
   messageStart.classList.add('hidden');
   messageWin.classList.toggle('hidden', game.getStatus() !== 'win');
